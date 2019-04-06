@@ -19,8 +19,15 @@ if(isset($_POST['submit'])){
   if($_POST['name'] == $user && $_POST['password'] == $password){
     // echo "Login success";
 
+    //cookie(key,value,expire)
+    setcookie('user_name', $_POST['name'], time()+120*60);
+
+    //delete cookie
+    // setcookie('user_name', $_POST['name'], time()-120*60);
+
     //redirect
-    header('Location: profile.php?name='.$user);
+    header('Location: profile.php');
+    // header('Location: profile.php?name='.$user);
   }else{
     echo "Login failed";
   }
