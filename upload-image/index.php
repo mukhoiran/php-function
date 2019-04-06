@@ -1,12 +1,13 @@
 <?php
   if(isset($_POST['submit'])){
     // var_dump($_FILES); --> get info abut image
+    $time = time();
     $name = $_FILES['image']['name'];
     $src = $_FILES['image']['tmp_name'];
     $error = $_FILES['image']['error'];
     $size = $_FILES['image']['size'];
     $ext = $_FILES['image']['type'];
-
+    $filefolder = 'upload/'.$name;
     // show extension files
     // $ex = pathinfo($name, PATHINFO_EXTENSION);
 
@@ -15,8 +16,15 @@
       if($size < 1000000){
 
         if($ext == 'image/png' || $ext == 'image/jpg'){
+
+          // avoid upload same name
+          if(file_exists($filefolder)){
+            $filefolder = str_replace(".png","",$filefolder);
+            $filefolder = $filefolder."_".$time.".png";
+          }
+
           //upload image
-          move_uploaded_file($src, 'upload/'.$name);
+          move_uploaded_file($src, $filefolder);
           echo "Upload successfull";
         }else{
           echo "Extension file shoud be jpg/png";
