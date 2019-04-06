@@ -11,6 +11,10 @@
 //   echo $_POST['name'];
 // }
 
+//global variable
+// echo $_SERVER['SERVER_NAME'];
+// die();
+
 //for use session
 session_start();
 
