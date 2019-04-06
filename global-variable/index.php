@@ -11,6 +11,8 @@
 //   echo $_POST['name'];
 // }
 
+//for use session
+session_start();
 
 $user = 'anam';
 $password = '123';
@@ -24,6 +26,9 @@ if(isset($_POST['submit'])){
 
     //delete cookie
     // setcookie('user_name', $_POST['name'], time()-120*60);
+
+    //session
+    $_SESSION['user_name'] = $_POST['name'];
 
     //redirect
     header('Location: profile.php');
