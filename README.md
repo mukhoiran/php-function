@@ -1,2 +1,2 @@
 # php-function
-Documentation Functions on PHP
+Functions on PHP
